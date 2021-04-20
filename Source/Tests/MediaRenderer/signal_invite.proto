@@ -1,0 +1,38 @@
+package signal_invite;
+option go_package = "signal_pdu";
+
+message Invite{
+    required int32 id = 1;
+    optional string options = 2;  // options: 邀请参数，举例说明{sdp:'aaaa’,  remoteControlType: 'master’ ，deviceURL:’sip@12.21.23.32:9090’} 
+}
+
+message InviteCancel{
+    required int32 id = 1; 
+}
+
+message InviteOk{
+    required int32 id = 1;
+     optional string  options = 2; 
+}
+
+message InviteReject{
+    required int32 id = 1;
+    optional string reson = 2; //邀请拒绝原因
+}
+
+message InviteRinging{
+    required int32 id = 1;
+}
+
+message InviteTimeOut{
+    required int32 id = 1;
+    optional string reson = 2;//超时原因
+}
+
+message InviteBye{
+    required int32 id = 1;
+    optional string reson = 2;//挂断原因
+
+}
+
+

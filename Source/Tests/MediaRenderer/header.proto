@@ -1,0 +1,40 @@
+package header;
+option go_package = "signal_pdu";
+
+enum signal_group_type{
+    SIGNALE_GROUP_TYPE_SYS                       = 0x00; //系统消息
+    SIGNALE_GROUP_TYPE_MESSAGE                   = 0x01; //即时消息
+    SIGNALE_GROUP_TYPE_INVITE                    = 0X03; //邀请
+    SIGNALE_GROUP_TYPE_RPC                       = 0x04; //跨平台
+    SIGNALE_GROUP_TYPE_ADDRESS_BOOK              = 0x05; //通讯录
+    SIGNALE_GROUP_TYPE_REMOTE_CONTROL            = 0x06; //远程控制
+}
+
+enum signal_cmd_type{
+    SIGNALE_CMD_TYPE_INVITE = 0x00;	//邀请
+    SIGNALE_CMD_TYPE_INVITE_CANCEL = 0x01;	//取消
+    SIGNALE_CMD_TYPE_INVITE_RINGING = 0x02;	
+    SIGNALE_CMD_TYPE_INVITE_OK = 0x03;		//accept
+    SIGNALE_CMD_TYPE_INVITE_REJECT = 0x04;	//reject
+    SIGNALE_CMD_TYPE_INVITE_TIMEOUT = 0x05;	
+    SIGNALE_CMD_TYPE_INVITE_BYE = 0x06;	//end
+    SIGNALE_CMD_TYPE_RC_MOUSE_EVENTS = 0x20;
+    SIGNALE_CMD_TYPE_RC_KEYBOARD_EVENTS = 0x21;
+    SIGNALE_CMD_TYPE_MESSAGE_DATA = 0x30;
+    SIGNALE_CMD_TYPE_MESSAGE_RECEIVED = 0x31;
+    SIGNALE_CMD_TYPE_MESSAGE_READ = 0x32;
+    SIGNALE_CMD_TYPE_MESSAGE_RECALLED = 0x33;
+    SIGNALE_CMD_TYPE_RPC_CALL_REQUEST = 0x40;
+    SIGNALE_CMD_TYPE_RPC_CALL_RESPONSE = 0x41;
+    SIGNALE_CMD_TYPE_RPC_NOTIFICATION = 0x42;
+}
+
+message signal_header{
+    required string version = 1;
+    required signal_group_type group_type = 2; 
+    required signal_cmd_type cmd_type = 3;
+    required uint32 timestamp = 4;
+    required string from = 5;
+    required string to = 6;
+    required bytes content = 7;
+}
