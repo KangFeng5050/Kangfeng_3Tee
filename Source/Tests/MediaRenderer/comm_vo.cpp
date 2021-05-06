@@ -1073,7 +1073,7 @@ HI_S32 SendStream_H264(const char* buffer,int size)
         	printf("SendStream failed for %#x!\n", s32Ret);
     	}
 	else{
-		//printf("SendStream success\n");
+		printf("SendStream success\n");
 	}
 	stStream.pu8Addr = NULL;
 	return s32Ret;
